@@ -17,9 +17,8 @@ const currentPage = ref<number>(2)
 const articles = ref<Article[]>([]);
 onMounted(async () => {
   try {
-    const response = await fetch('https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts/');
-    const data: Article[] = await response.json();
-    articles.value = data;
+    const response = await fetch('https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts');
+    articles.value = await response.json();
     totalItems.value = articles.value.length
   } catch (error) {
     console.error("Ошибка загрузки статей:", error);
